@@ -9,16 +9,21 @@ import Foundation
 import UIKit
 
 class SdokuCell : UITextField {
+    var posX : Int = -1
+    var posY : Int = -1
+    var val : CellValue = CellValue(val: -1)
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
-    init(spacing : CGFloat, leading : CGFloat, top : CGFloat, posX : Int, posY : Int, view : UIView){
+    init(spacing : CGFloat, leading : CGFloat, top : CGFloat, posX : Int, posY : Int, val : CellValue, view : UIView){
         super.init(frame: CGRect())
-        
+        self.posY = posY
+        self.posX = posX
+        self.val = val
         let safeArea = view.safeAreaLayoutGuide
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
@@ -40,5 +45,25 @@ class SdokuCell : UITextField {
                                      constant: leading + CGFloat(posX) * spacing).isActive = true
         topAnchor.constraint(equalTo: safeArea.topAnchor,
                                  constant: top + CGFloat(posY) * spacing).isActive = true
+        
+        text = PrintString()
+        
+    }
+    func InitialSetValue(val : Int) -> Void {
+        self.val.val = val
+        text = PrintString()
+        isUserInteractionEnabled = false
+    }
+    func SetValue(val : Int) -> Void{
+        self.val.val = val
+        text = PrintString()
+    }
+    func PrintString() -> String {
+        if self.val.val < 0 {
+            return ""
+        }
+        else{
+            return String(self.val.val)
+        }
     }
 }

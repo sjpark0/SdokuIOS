@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2EFE5129B3638900B9F402 /* SdokuSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2EFE5029B3638900B9F402 /* SdokuSolver.swift */; };
+		0A2EFE5329B36B9400B9F402 /* CellValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2EFE5229B36B9400B9F402 /* CellValue.swift */; };
 		0AA9E29E29B3161600BBE0B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9E29D29B3161600BBE0B4 /* AppDelegate.swift */; };
 		0AA9E2A029B3161600BBE0B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9E29F29B3161600BBE0B4 /* SceneDelegate.swift */; };
 		0AA9E2A229B3161600BBE0B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9E2A129B3161600BBE0B4 /* ViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A2EFE5029B3638900B9F402 /* SdokuSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SdokuSolver.swift; sourceTree = "<group>"; };
+		0A2EFE5229B36B9400B9F402 /* CellValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellValue.swift; sourceTree = "<group>"; };
 		0AA9E29A29B3161600BBE0B4 /* SdokuIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SdokuIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AA9E29D29B3161600BBE0B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AA9E29F29B3161600BBE0B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +108,9 @@
 				0AA9E29D29B3161600BBE0B4 /* AppDelegate.swift */,
 				0AA9E29F29B3161600BBE0B4 /* SceneDelegate.swift */,
 				0AA9E2A129B3161600BBE0B4 /* ViewController.swift */,
+				0A2EFE5229B36B9400B9F402 /* CellValue.swift */,
 				0AA9E2CD29B3361500BBE0B4 /* SdokuCell.swift */,
+				0A2EFE5029B3638900B9F402 /* SdokuSolver.swift */,
 				0AA9E2A329B3161600BBE0B4 /* Main.storyboard */,
 				0AA9E2A629B3161700BBE0B4 /* Assets.xcassets */,
 				0AA9E2A829B3161700BBE0B4 /* LaunchScreen.storyboard */,
@@ -264,6 +270,8 @@
 				0AA9E2CE29B3361500BBE0B4 /* SdokuCell.swift in Sources */,
 				0AA9E2A229B3161600BBE0B4 /* ViewController.swift in Sources */,
 				0AA9E29E29B3161600BBE0B4 /* AppDelegate.swift in Sources */,
+				0A2EFE5329B36B9400B9F402 /* CellValue.swift in Sources */,
+				0A2EFE5129B3638900B9F402 /* SdokuSolver.swift in Sources */,
 				0AA9E2A029B3161600BBE0B4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
