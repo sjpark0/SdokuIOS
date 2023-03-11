@@ -34,6 +34,15 @@
                                     <action selector="SolveSdoku:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jw1-xg-i3X"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-y3-UhU">
+                                <rect key="frame" x="154" y="85" width="86" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Remove"/>
+                                <connections>
+                                    <action selector="RemoveComponent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J1i-9g-1q6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

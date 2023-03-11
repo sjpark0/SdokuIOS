@@ -11,7 +11,7 @@ import UIKit
 class SdokuCell : UITextField {
     var posX : Int = -1
     var posY : Int = -1
-    var val : CellValue = CellValue(val: -1)
+    var val : Int = -1
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -19,7 +19,7 @@ class SdokuCell : UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    init(spacing : CGFloat, leading : CGFloat, top : CGFloat, posX : Int, posY : Int, val : CellValue, view : UIView){
+    init(spacing : CGFloat, leading : CGFloat, top : CGFloat, posX : Int, posY : Int, val : Int, view : UIView){
         super.init(frame: CGRect())
         self.posY = posY
         self.posX = posX
@@ -50,20 +50,25 @@ class SdokuCell : UITextField {
         
     }
     func InitialSetValue(val : Int) -> Void {
-        self.val.val = val
+        self.val = val
         text = PrintString()
-        isUserInteractionEnabled = false
+        if val != -1{
+            isUserInteractionEnabled = false
+        }
+        else{
+            isUserInteractionEnabled = true
+        }
     }
     func SetValue(val : Int) -> Void{
-        self.val.val = val
+        self.val = val
         text = PrintString()
     }
     func PrintString() -> String {
-        if self.val.val < 0 {
+        if self.val < 0 {
             return ""
         }
         else{
-            return String(self.val.val)
+            return String(self.val)
         }
     }
 }

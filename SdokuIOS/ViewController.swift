@@ -6,59 +6,74 @@
 //
 
 import UIKit
+let NUM_VAL_X : Int = 3
+let NUM_VAL_Y : Int = 3
+
+extension Array {
+    public init(count: Int, createElement: @autoclosure () -> Element) {
+        self = (0 ..< count).map { _ in createElement() }
+    }
+}
 
 class ViewController: UIViewController {
-    var m_cell : [SdokuCell] = [SdokuCell]()
-    var m_cellValue : [CellValue] = [CellValue]()
     
-    let m_solver : SdokuSolver = SdokuSolver()
-    
-    let NUM_VAL : Int = 9
     let initialTop : CGFloat = 100
     let initialLeading : CGFloat = 50
     let spacing : CGFloat = 30
     
+    //var m_cell = Array(count: NUM_VAL_X * NUM_VAL_Y, createElement: Array(count: NUM_VAL_X * NUM_VAL_Y, createElement: SdokuCell()))
+    
+    var m_cell : [[SdokuCell]] = [[SdokuCell]](count: NUM_VAL_X * NUM_VAL_Y, createElement: [SdokuCell](count: NUM_VAL_X * NUM_VAL_Y, createElement: SdokuCell()))
+    
+    var m_cellValue : [[Int]] = [[Int]](repeating: [Int](repeating : -1, count : NUM_VAL_X * NUM_VAL_Y), count: NUM_VAL_X * NUM_VAL_Y)
+    
+    
+    var m_solver : SdokuSolver = SdokuSolver()
     
     @IBAction func GenerateSdoku(_ sender: UIButton) {
-        let numFilled : Int = 50
-        var idX : Int = -1
-        var idY : Int = -1
+        m_solver.m_numCellY = NUM_VAL_Y
+        m_solver.m_numCellX = NUM_VAL_X
         
-        
-        for i in 0..<NUM_VAL {
-            for j in 0..<NUM_VAL{
-                m_cell[j + i * NUM_VAL].isUserInteractionEnabled = true
-                m_cell[j + i * NUM_VAL].SetValue(val: -1)
+        for i in 0..<(NUM_VAL_X * NUM_VAL_Y) {
+            for j in 0..<(NUM_VAL_X * NUM_VAL_Y){
+                m_cell[i][j].InitialSetValue(val: -1)
             }
         }
         
-        m_solver.MakeSdoku(val: &m_cellValue, row: NUM_VAL, col: NUM_VAL)
-        /*for _ in 0..<numFilled{
-            idX = Int.random(in: 0..<NUM_VAL)
-            idY = Int.random(in: 0..<NUM_VAL)
-            m_cell[idX + idY * NUM_VAL].InitialSetValue(val: Int.random(in: 0..<NUM_VAL) + 1)
-            
-            //print(idX, idY, m_value[idX + idY * NUM_VAL].val)
-            
-
-        }*/
+        m_solver.MakeSdoku(val: &m_cellValue)
+        
+        for i in 0..<NUM_VAL_X * NUM_VAL_Y{
+            for j in 0..<NUM_VAL_X * NUM_VAL_Y {
+                m_cell[i][j].InitialSetValue(val: m_cellValue[i][j])
+            }
+        }
     }
     
     @IBAction func SolveSdoku(_ sender: UIButton) {
+        m_solver.SolveSdoku(sdoku: &m_cellValue)
         
+        for i in 0..<NUM_VAL_X * NUM_VAL_Y{
+            for j in 0..<NUM_VAL_X * NUM_VAL_Y {
+                m_cell[i][j].SetValue(val: m_cellValue[i][j])
+            }
+        }
+    }
+    
+    @IBAction func RemoveComponent(_ sender: UIButton) {
+        m_solver.RemoveComponent(sdoku: &m_cellValue, numRemove: 50)
+        
+        for i in 0..<NUM_VAL_X * NUM_VAL_Y{
+            for j in 0..<NUM_VAL_X * NUM_VAL_Y {
+                m_cell[i][j].InitialSetValue(val: m_cellValue[i][j])
+            }
+        }
     }
     override func viewDidLoad() {
         
-        let safeArea = view.safeAreaLayoutGuide
-        
-        for i in 0..<NUM_VAL {
-            for j in 0..<NUM_VAL {
-                var val : CellValue = CellValue(val: -1)
-                var cell : SdokuCell = SdokuCell(spacing: spacing, leading: initialLeading, top: initialTop, posX: j, posY: i, val : val, view: view)
-                
-                //val.text = String(i)
-                m_cellValue.append(val)
-                m_cell.append(cell)
+        for i in 0..<(NUM_VAL_X * NUM_VAL_Y) {
+            for j in 0..<(NUM_VAL_X * NUM_VAL_Y) {
+                m_cellValue[i][j] = -1
+                m_cell[i][j] = SdokuCell(spacing: spacing, leading: initialLeading, top: initialTop, posX: j, posY: i, val : -1, view: view)
             }
         }
         
